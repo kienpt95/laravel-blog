@@ -8,6 +8,6 @@ class PageController extends Controller
 {
     public function index()
     {
-        return "Hello";
+        return view('welcome');
     }
 }
