@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PageController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $ArticleList = Post::all();
+        return view('index')->with('article', $ArticleList);
     }
 }
