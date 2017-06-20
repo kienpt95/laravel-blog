@@ -11,4 +11,16 @@
 |
 */
 
-Route::get('/', 'PageController@index');
+Route::get('/', 'FrontEndController@index')->name('index');
+
+Route::prefix('admin')->middleware('checkAdmin')->group(function () {
+
+    Route::get('/', 'BackEndController@index')->name('admin_dashboard');
+
+    Route::prefix('post')->group(function () {
+        Route::get('/', 'BackEndController@post')->name('admin_post');
+        Route::get('/edit', 'BackEnd@postA')->name('admin_post_edit');
+    });
+});
+Auth::routes();
+
