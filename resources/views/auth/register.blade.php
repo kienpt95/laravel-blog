@@ -94,7 +94,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                        <input type="password" placeholder="Password..." class="form-control" />
+                                        <input type="password" placeholder="Password..." class="form-control" name="password" required/>
                                     </div>
                                     @if ($errors->has('password'))
                                         <span class="help-block">
