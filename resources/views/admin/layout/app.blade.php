@@ -14,21 +14,21 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
-    <link href="../../assets/css/material-dashboard.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../../assets/css/demo.css" rel="stylesheet" />
+    <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
-    <link rel="stylesheet" href="../../assets/css/bootstrap-tagsinput-typeahead.css">
-    <link rel="stylesheet" href="../../assets/css/loading.css">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-tagsinput-typeahead.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/loading.css')}}">
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="../../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="{{asset('assets/img/sidebar-1.jpg')}}">
             <div class="logo">
                 <a href="{{ route('index') }}" class="simple-text">
                     Klog
@@ -42,7 +42,7 @@
             <div class="sidebar-wrapper">
                 <div class="user">
                     <div class="photo">
-                        <img src="../../assets/img/faces/pikagon.jpg" />
+                        <img src="{{asset('assets/img/faces/pikagon.jpg')}}" />
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" href="grid.html#collapseExample" class="collapsed">
@@ -215,22 +215,22 @@
                 <li class="header-title">Images</li>
                 <li class="active">
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
-                        <img src="../../assets/img/sidebar-1.jpg" alt="" />
+                        <img src="{{asset('assets/img/sidebar-1.jpg')}}" alt="" />
                     </a>
                 </li>
                 <li>
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
-                        <img src="../../assets/img/sidebar-2.jpg" alt="" />
+                        <img src="{{asset('assets/img/sidebar-2.jpg')}}" alt="" />
                     </a>
                 </li>
                 <li>
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
-                        <img src="../../assets/img/sidebar-3.jpg" alt="" />
+                        <img src="{{asset('assets/img/sidebar-3.jpg')}}" alt="" />
                     </a>
                 </li>
                 <li>
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
-                        <img src="../../assets/img/sidebar-4.jpg" alt="" />
+                        <img src="{{asset('assets/img/sidebar-4.jpg')}}" alt="" />
                     </a>
                 </li>
                 <li class="button-container">
@@ -251,51 +251,51 @@
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="../../assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-<script src="../../assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../../assets/js/material.min.js" type="text/javascript"></script>
-<script src="../../assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="{{asset('assets/js/jquery-3.1.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/jquery-ui.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/material.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/perfect-scrollbar.jquery.min.js')}}" type="text/javascript"></script>
 <!-- Forms Validations Plugin -->
-<script src="../../assets/js/jquery.validate.min.js"></script>
+<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-<script src="../../assets/js/moment.min.js"></script>
+<script src="{{asset('assets/js/moment.min.js')}}"></script>
 <!--  Charts Plugin -->
-<script src="../../assets/js/chartist.min.js"></script>
+<script src="{{asset('assets/js/chartist.min.js')}}"></script>
 <!--  Plugin for the Wizard -->
-<script src="../../assets/js/jquery.bootstrap-wizard.js"></script>
+<script src="{{asset('assets/js/jquery.bootstrap-wizard.js')}}"></script>
 <!--  Notifications Plugin    -->
-<script src="../../assets/js/bootstrap-notify.js"></script>
+<script src="{{asset('assets/js/bootstrap-notify.js')}}"></script>
 <!--   Sharrre Library    -->
-<script src="../../assets/js/jquery.sharrre.js"></script>
+<script src="{{asset('assets/js/jquery.sharrre.js')}}"></script>
 <!-- DateTimePicker Plugin -->
-<script src="../../assets/js/bootstrap-datetimepicker.js"></script>
+<script src="{{asset('assets/js/bootstrap-datetimepicker.js')}}"></script>
 <!-- Vector Map plugin -->
-<script src="../../assets/js/jquery-jvectormap.js"></script>
+<script src="{{asset('assets/js/jquery-jvectormap.js')}}"></script>
 <!-- Sliders Plugin -->
-<script src="../../assets/js/nouislider.min.js"></script>
+<script src="{{asset('assets/js/nouislider.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <!-- Select Plugin -->
-<script src="../../assets/js/jquery.select-bootstrap.js"></script>
+<script src="{{asset('assets/js/jquery.select-bootstrap.js')}}"></script>
 <!--  DataTables.net Plugin    -->
-<script src="../../assets/js/jquery.datatables.js"></script>
+<script src="{{asset('assets/js/jquery.datatables.js')}}"></script>
 <!-- Sweet Alert 2 plugin -->
-<script src="../../assets/js/sweetalert2.js"></script>
+<script src="{{asset('assets/js/sweetalert2.js')}}"></script>
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="../../assets/js/jasny-bootstrap.min.js"></script>
+<script src="{{asset('assets/js/jasny-bootstrap.min.js')}}"></script>
 <!--  Full Calendar Plugin    -->
-<script src="../../assets/js/fullcalendar.min.js"></script>
+<script src="{{asset('assets/js/fullcalendar.min.js')}}"></script>
 <!-- TagsInput Plugin -->
-<script src="../../assets/js/jquery.tagsinput.js"></script>
+<script src="{{asset('assets/js/jquery.tagsinput.js')}}"></script>
 <!-- Material Dashboard javascript methods -->
-<script src="../../assets/js/material-dashboard.js"></script>
+<script src="{{asset('assets/js/material-dashboard.js')}}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../../assets/js/demo.js"></script>
+<script src="{{asset('assets/js/demo.js')}}"></script>
 <!--TinyMCE editor-->
 <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
 <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-<script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/jquery.loading.min.js"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
+<script src="{{asset('assets/js/jquery.loading.min.js')}}"></script>
 </html>

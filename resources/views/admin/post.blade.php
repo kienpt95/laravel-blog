@@ -90,9 +90,10 @@
                                             </div>
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-simple">
-                                                <i class="material-icons">edit</i>
-                                            </button>
+                                            <a href="{{route('admin_post_edit', $post->id)}}" class="btn btn-success btn-simple"><i class="material-icons">edit</i></a>
+                                            {{--<button type="button" rel="tooltip" class="btn btn-success btn-simple">--}}
+                                                {{--<i class="material-icons">edit</i>--}}
+                                            {{--</button>--}}
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-simple" onclick="app.removePost({{$post->id}})">
                                                 <i class="material-icons">close</i>
                                             </button>

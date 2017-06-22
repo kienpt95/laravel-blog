@@ -20,8 +20,8 @@ Route::prefix('admin')->middleware('checkAdmin')->group(function () {
     Route::prefix('post')->group(function () {
         Route::get('/', 'BackEndController@post')->name('admin_post');
         Route::get('/create', 'PostController@create')->name('admin_post_create');
+        Route::get('/edit/{id}', 'PostController@edit')->name('admin_post_edit');
         Route::post('/store', 'PostController@store')->name('admin_post_store');
-        Route::get('/edit', 'PostController@edit')->name('admin_post_edit');
         Route::delete('/delete/{id}', 'PostController@destroy')->name('admin_post_delete');
         Route::post('change_status/{id}', 'PostController@changeStatus')->name('admin_post_change_status');
 

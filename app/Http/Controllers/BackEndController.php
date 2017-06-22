@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
 
@@ -18,7 +19,12 @@ class BackEndController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $statistic = [
+            "post_count" => Post::count(),
+            "tag_count" => Tag::count(),
+            "website_visits" => 75521
+        ];
+        return view('admin.dashboard')->withStatistic($statistic);
     }
 
     /**

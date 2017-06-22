@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -14,25 +16,26 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $is_public = false;
-        if ($request->input('public') == 'on') {
-            $is_public = true;
-        }
-        $title = $request->input('title');
-        $slug = $request->input('slug');
-        $content = $request->input('content');
-        $tags = $request->input('tags');
-
+        $id = $request->input('id');
         //TODO: validate
 
-        $post = new Post;
+        $create_new = ($id == "") ? true : false;
+        if (!$create_new) {
+            $post = Post::find($id);
+        } else {
+            $post = new Post;
+        }
+        $is_public = ($request->input('public') == 'on') ? true : false;
+
         $post->is_public = $is_public;
-        $post->title = $title;
-        $post->slug = $slug;
-        $post->content = $content;
+        $post->title = $request->input('title');
+        $post->slug = $request->input('slug');
+        $post->content = $request->input('content');
         $post->save();
-        return redirect()->route('admin_post');
         //TODO: save tag
+        $tags = $request->input('tags');
+        app('App\Http\Controllers\TagController')->updatePostTags($post->id, $tags);
+        return redirect()->route('admin_post');
     }
 
     public function destroy($id)
@@ -42,15 +45,13 @@ class PostController extends Controller
         //TODO: return response
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.post.edit');
+        $post = Post::find($id);
+        $tags = $post->tags;
+        return view('admin.post.edit')->withPost($post)->withTags($tags);
     }
 
-    public function update()
-    {
-
-    }
     public function changeStatus($id)
     {
         $post = Post::find($id);

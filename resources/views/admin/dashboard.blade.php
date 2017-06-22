@@ -55,7 +55,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Posts</p>
-                    <h3 class="card-title">184</h3>
+                    <h3 class="card-title">{{$statistic['post_count']}}</h3>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Tags</p>
-                    <h3 class="card-title">4,245</h3>
+                    <h3 class="card-title">{{$statistic['tag_count']}}</h3>
                 </div>
             </div>
         </div>
