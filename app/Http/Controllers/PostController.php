@@ -39,6 +39,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
+        //TODO: return response
     }
 
     public function edit()
@@ -54,6 +55,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->is_public = !$post->is_public;
-        return redirect()->route('admin_post');
+        $post->save();
+        //TODO: return response
     }
 }

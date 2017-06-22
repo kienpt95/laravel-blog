@@ -61,7 +61,7 @@
                 <div class="card-content">
                     <h4 class="card-title">Posts data</h4>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="post-data">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
@@ -85,7 +85,7 @@
                                         <td class="td-actions text-right">
                                             <div class="togglebutton">
                                                 <label>
-                                                    <input type="checkbox" @if($post->is_public) checked @endif onchange="app.publicPost({{$post->id}})">
+                                                    <input type="checkbox" id="is_public_{{$post->id}}" @if($post->is_public) checked @endif onchange="app.changePostStatus({{$post->id}})">
                                                 </label>
                                             </div>
                                         </td>

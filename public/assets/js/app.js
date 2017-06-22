@@ -43,6 +43,11 @@ elt.tagsinput({
 });
 
 app = {
+
+    /**
+     * remove post by id
+     * @param id
+     */
     removePost: function (id) {
         swal({
             title: 'Are you sure?',
@@ -54,23 +59,45 @@ app = {
             confirmButtonText: 'Yes, delete it!',
             buttonsStyling: false
         }).then(function () {
-            $data = document.getElementById('form_delete_'+id);
+            $('#post-data').loading('toggle');
             $.ajax({
                 url: 'post/delete/'+id,
                 data: {"_token": window.csrf_token },
                 type: 'DELETE',
                 success: function () {
-                    document.getElementById('tr_'+id).remove();
                     swal({
                         title: 'Deleted!',
                         text: 'Your file has been deleted.',
                         type: 'success',
                         confirmButtonClass: "btn btn-success",
                         buttonsStyling: false
-                    })
+                    }).then(function () {
+                        setTimeout(function () {
+                            document.getElementById('tr_'+id).remove();
+                            $('#post-data').loading('stop');
+                        },600);
+                    });
                 }
             });
+
         });
 
+    },
+
+    /**
+     * change status of post by id(is_public:true|false)
+     * @param id
+     */
+    changePostStatus: function (id) {
+        $('#post-data').loading('toggle');
+        $.ajax({
+            url: 'post/change_status/'+id,
+            data: {"_token": window.csrf_token },
+            type: 'POST',
+            success: function () {
+                setTimeout(function () {},800);
+            }
+        });
+        $('#post-data').loading('stop');
     }
 };

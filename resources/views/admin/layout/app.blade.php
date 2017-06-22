@@ -23,6 +23,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link rel="stylesheet" href="../../assets/css/bootstrap-tagsinput-typeahead.css">
+    <link rel="stylesheet" href="../../assets/css/loading.css">
 </head>
 
 <body>
@@ -296,4 +297,5 @@
 
 <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/jquery.loading.min.js"></script>
 </html>
