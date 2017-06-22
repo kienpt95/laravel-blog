@@ -94,7 +94,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                        <input type="password" placeholder="Password..." class="form-control" name="password" required/>
+                                        <input type="password" id="password" placeholder="Password..." class="form-control" name="password" required/>
                                     </div>
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -105,7 +105,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
-                                        <input type="password" placeholder="Confirm Password..." class="form-control" name="password_confirmation" required/>
+                                        <input type="password" placeholder="Confirm Password..." class="form-control" name="password_confirmation" id="password_confirmation" required equalTo="#password"/>
                                     </div>
                                     <div class="checkbox">
                                         <label>
