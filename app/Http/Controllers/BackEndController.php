@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class BackEndController extends Controller
 {
@@ -21,11 +22,12 @@ class BackEndController extends Controller
     }
 
     /**
-     * post manger
+     * Post manager
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function post()
     {
-        return view('admin.post');
+        $posts = Post::paginate(10);
+        return view('admin.post')->withPosts($posts);
     }
 }

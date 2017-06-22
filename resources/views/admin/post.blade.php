@@ -48,9 +48,9 @@
 
 @section('content')
     <div class="col-md-3 col-md-offset-11">
-        <button class="btn btn-rose btn-round btn-fab btn-fab-mini">
+        <a href="{{ route('admin_post_create') }}" class="btn btn-primary btn-round btn-fab btn-fab-mini">
             <i class="material-icons">add</i>
-        </button>
+        </a>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -59,6 +59,7 @@
                     <i class="material-icons">forum</i>
                 </div>
                 <div class="card-content">
+                    <h4 class="card-title">Posts data</h4>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -73,31 +74,32 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">id</td>
-                                <td>This is the title of post</td>
-                                <td>Content</td>
-                                <td class="text-right">Created at</td>
-                                <td class="text-right">Updated at</td>
-                                <td class="td-actions text-right">
-                                    <div class="togglebutton">
-                                        <label>
-                                            <input type="checkbox" checked>
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-simple">
-                                        <i class="material-icons">person</i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple">
-                                        <i class="material-icons">close</i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @if( isset($posts))
+                                @foreach($posts as $post)
+                                    <tr id="tr_{{$post->id}}">
+                                        <td class="text-center">{{$post->id}}</td>
+                                        <td>{{$post->title}}</td>
+                                        <td>{{$post->content}}</td>
+                                        <td class="text-right">{{$post->created_at}}</td>
+                                        <td class="text-right">{{$post->updated_at}}</td>
+                                        <td class="td-actions text-right">
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" @if($post->is_public) checked @endif onchange="app.publicPost({{$post->id}})">
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-simple">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-simple" onclick="app.removePost({{$post->id}})">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
