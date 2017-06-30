@@ -76,10 +76,11 @@
                             <tbody>
                             @if( isset($posts))
                                 @foreach($posts as $post)
+                                    <? /** @var App\Post $post */ ?>
                                     <tr id="tr_{{$post->id}}">
                                         <td class="text-center">{{$post->id}}</td>
                                         <td>{{$post->title}}</td>
-                                        <td>{{$post->content}}</td>
+                                        <td>{{ $post->getExcerpt(10) }}</td>
                                         <td class="text-right">{{$post->created_at}}</td>
                                         <td class="text-right">{{$post->updated_at}}</td>
                                         <td class="td-actions text-right">
@@ -91,9 +92,6 @@
                                         </td>
                                         <td class="td-actions text-right">
                                             <a href="{{route('admin_post_edit', $post->id)}}" class="btn btn-success btn-simple"><i class="material-icons">edit</i></a>
-                                            {{--<button type="button" rel="tooltip" class="btn btn-success btn-simple">--}}
-                                                {{--<i class="material-icons">edit</i>--}}
-                                            {{--</button>--}}
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-simple" onclick="app.removePost({{$post->id}})">
                                                 <i class="material-icons">close</i>
                                             </button>

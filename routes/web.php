@@ -12,7 +12,10 @@
 */
 
 Route::get('/', 'FrontEndController@index')->name('index');
-Route::get('getTags.json','TagController@getTags')->name('getTags');
+Route::get('/post/{slug}')->name('post_view');
+/**
+ * Back-end routers
+ */
 Route::prefix('admin')->middleware('checkAdmin')->group(function () {
 
     Route::get('/', 'BackEndController@index')->name('admin_dashboard');
@@ -24,8 +27,10 @@ Route::prefix('admin')->middleware('checkAdmin')->group(function () {
         Route::post('/store', 'PostController@store')->name('admin_post_store');
         Route::delete('/delete/{id}', 'PostController@destroy')->name('admin_post_delete');
         Route::post('change_status/{id}', 'PostController@changeStatus')->name('admin_post_change_status');
-
     });
 });
+// response all tags for autocomplete
+Route::get('getTags.json','TagController@getTags')->name('getTags');
+
 Auth::routes();
 

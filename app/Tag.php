@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Helper\Convert;
 
 class Tag extends Model
 {
@@ -15,7 +16,7 @@ class Tag extends Model
     {
         $new_tag = new Tag;
         $new_tag->title = $title;
-        $new_tag->slug = Helper\Slugify::convert($title);
+        $new_tag->slug = Convert::toSlug($title);
         $new_tag->save();
         return $new_tag;
     }
