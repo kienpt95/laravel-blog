@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Helper\Convert;
 
 const DEFAULT_POST_THUMB = "/media/default.png";
+const MORE_TEXT = "...";
 
 class Post extends Model
 {
@@ -15,15 +16,18 @@ class Post extends Model
     }
 
     /**
+     * get short content
      * @param int $length
      * @return string
      */
     public function getExcerpt($length)
     {
-        $more = "...";
-        return Convert::toExcerpt($this->content, $length, $more);
+        return Convert::toExcerpt($this->content, $length, MORE_TEXT);
     }
 
+    /**
+     * @return string
+     */
     public function getThumbImage()
     {
         $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $this->content, $matches);
