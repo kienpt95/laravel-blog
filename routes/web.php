@@ -18,19 +18,27 @@ Route::get('/post/{slug}')->name('post_view');
  */
 Route::prefix('admin')->middleware('checkAdmin')->group(function () {
 
-    Route::get('/', 'BackEndController@index')->name('admin_dashboard');
+    // checkpoint
+    Route::get('checkpoint', 'TwoFactorAuthController@index')->name('checkpoint');
+    Route::post('checkpoint', 'TwoFactorAuthController@validate2FA')->name('checkpoint_submit');
 
-    Route::prefix('post')->group(function () {
-        Route::get('/', 'BackEndController@post')->name('admin_post');
-        Route::get('/create', 'PostController@create')->name('admin_post_create');
-        Route::get('/edit/{id}', 'PostController@edit')->name('admin_post_edit');
-        Route::post('/store', 'PostController@store')->name('admin_post_store');
-        Route::delete('/delete/{id}', 'PostController@destroy')->name('admin_post_delete');
-        Route::post('change_status/{id}', 'PostController@changeStatus')->name('admin_post_change_status');
+    // admin action
+    Route::middleware('TFAuth')->group(function () {
+        Route::get('/', 'BackEndController@index')->name('admin_dashboard');
+
+        Route::prefix('post')->group(function () {
+            Route::get('/', 'BackEndController@post')->name('admin_post');
+            Route::get('/create', 'PostController@create')->name('admin_post_create');
+            Route::get('/edit/{id}', 'PostController@edit')->name('admin_post_edit');
+            Route::post('/store', 'PostController@store')->name('admin_post_store');
+            Route::delete('/delete/{id}', 'PostController@destroy')->name('admin_post_delete');
+            Route::post('change_status/{id}', 'PostController@changeStatus')->name('admin_post_change_status');
+        });
     });
+
 });
 // response all tags for autocomplete
-Route::get('getTags.json','TagController@getTags')->name('getTags');
+Route::get('getTags.json', 'TagController@getTags')->name('getTags');
 
 Auth::routes();
 
