@@ -9,11 +9,41 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+    /**
+     * show list of post
+     * @return mixed
+     */
+    public function index()
+    {
+        $posts = Post::paginate(10);
+        return view('frontend.index')->withPosts($posts);
+    }
+    /**
+     * Post read
+     * @param $slug
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
+     */
+    public function show($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        return view('frontend.post')->withPost($post);
+    }
+
+    /**
+     * Create new post in admin dashboard
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
+     */
     public function create()
     {
         return view('admin.post.create');
     }
 
+    /**
+     * Store new post
+     * Admin Dashboard
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $id = $request->input('id');
@@ -38,6 +68,11 @@ class PostController extends Controller
         return redirect()->route('admin_post');
     }
 
+    /**
+     * Delete post by id
+     * Admin Dashboard
+     * @param $id
+     */
     public function destroy($id)
     {
         $post = Post::find($id);
@@ -45,6 +80,12 @@ class PostController extends Controller
         //TODO: return response
     }
 
+    /**
+     * Edit post
+     * Admin Dashboard
+     * @param $id
+     * @return mixed
+     */
     public function edit($id)
     {
         $post = Post::find($id);
@@ -52,6 +93,11 @@ class PostController extends Controller
         return view('admin.post.edit')->withPost($post)->withTags($tags);
     }
 
+    /**
+     * Change status public|private of post
+     * Admin Dashboard
+     * @param $id
+     */
     public function changeStatus($id)
     {
         $post = Post::find($id);

@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'FrontEndController@index')->name('index');
-Route::get('/post/{slug}')->name('post_view');
+Route::get('/', 'PostController@index')->name('index');
+Route::get('/post/{slug}', 'PostController@show')->name('post_view');
+Route::get('/tag/{slug}')->name('tag_link');
 /**
  * Back-end routers
  */

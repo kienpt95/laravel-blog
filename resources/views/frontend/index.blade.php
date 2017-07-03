@@ -5,9 +5,8 @@
         <? /** @var App\Post $post */?>
         <article class="post post-showinfo">
         <div class="post-media overlay">
-            <a class="feature-image magnific hover-animate" href="assets/images/design/vector/img-7-1200x600.png" title="Thats a nice image">
-                <img alt="some image" src="assets/images/design/vector/img-7-1200x600.png">
-                <i class="fa fa-search-plus"></i>
+            <a class="feature-image" href="{{ route('post_view', $post->slug) }}" title="{{$post->title}}">
+                <img alt="{{$post->title}}" src="{{ $post->getThumbImage() }}">
             </a>
         </div>
         <div class="post-head small-screen-center">
@@ -21,7 +20,7 @@
         </div>
         <div class="post-body">
             <p>{{ $post->getExcerpt(40) }}</p>
-            <a class="more-link" href="post.html">read more</a>
+            <a class="more-link" href="{{ route('post_view', $post->slug) }}">read more</a>
         </div>
         <div class="bordered post-extras text-center">
             <div class="text-center">
@@ -32,13 +31,13 @@
                       </a>
                   </span>
                 <span class="post-tags">
-                      <i class="fa fa-tags"></i>
-                      <a href="post.html">Design,</a>
-                      <a href="post.html">Flat,</a>
-                      <a href="post.html">Dynamics</a>
+                    @foreach($post->tags as $tag)
+                        <i class="fa fa-tags"></i>
+                        <a href="{{ route('tag_link',$tag->slug) }}">{{$tag->title}},</a>
+                    @endforeach
                   </span>
                 <span class="post-link">
-                      <a href="post.html">
+                      <a href="{{ route('post_view', $post->slug) }}">
                           <i class="fa fa-comments"></i>
                           2 comments
                       </a>
@@ -48,17 +47,6 @@
     </article>
     @endforeach
     <div class="text-center post-showinfo">
-        <ul class="post-navigation pagination">
-            <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a>
-            </li>
-            <li class="active"><span href="#">1</span>
-            </li>
-            <li><a href="#">2</a>
-            </li>
-            <li><a href="#">3</a>
-            </li>
-            <li><a class="btn btn-primary" href="#"><i class="fa fa-angle-right"></i></a>
-            </li>
-        </ul>
+        {{ $posts->links() }}
     </div>
 @endsection
