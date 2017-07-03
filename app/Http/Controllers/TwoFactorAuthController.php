@@ -49,7 +49,7 @@ class TwoFactorAuthController extends Controller
     }
 
     /**
-     * validator 2 factor auth code
+     * validator two factor auth code
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
